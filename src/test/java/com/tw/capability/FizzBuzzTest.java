@@ -64,13 +64,11 @@ class FizzBuzzTest {
         assertEquals(transStr,result);
     }
 
-
     static Stream<Arguments> container7TestArguments() {
         return Stream.of(
-                Arguments.of(7, "Whizz"),
-                Arguments.of(37, "FizzWhizz"),
-                Arguments.of(73, "FizzWhizz"),
-                Arguments.of(75, "Whizz"),
+                Arguments.of(7, null),
+                Arguments.of(37, null),
+                Arguments.of(75, "Fizz"),
                 Arguments.of(14, null)
         );
     }
@@ -82,5 +80,4 @@ class FizzBuzzTest {
 
         assertEquals(transStr,result);
     }
-
 }

@@ -28,10 +28,8 @@ public class FizzBuzz {
     }
 
     public static String transNumByContainerSeven(int inputNum) {
-        StringBuilder sb = new StringBuilder();
-        if(Integer.toString(inputNum).contains("3") || inputNum % 3 == 0) sb.append("Fizz");
         if(Integer.toString(inputNum).contains("7")){
-            return  sb.append("Whizz").toString();
+            if(inputNum % 3 == 0) return "Fizz";
         }
         return null;
     }
