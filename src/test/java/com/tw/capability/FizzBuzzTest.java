@@ -52,7 +52,7 @@ class FizzBuzzTest {
                 Arguments.of(5, "Buzz"),
                 Arguments.of(15, "Buzz"),
                 Arguments.of(35, "BuzzWhizz"),
-                Arguments.of(14, null)
+                Arguments.of(10, null)
         );
     }
     @ParameterizedTest
@@ -64,5 +64,23 @@ class FizzBuzzTest {
         assertEquals(transStr,result);
     }
 
+
+    static Stream<Arguments> container7TestArguments() {
+        return Stream.of(
+                Arguments.of(7, "Whizz"),
+                Arguments.of(37, "FizzWhizz"),
+                Arguments.of(73, "FizzWhizz"),
+                Arguments.of(75, "Whizz"),
+                Arguments.of(14, null)
+        );
+    }
+    @ParameterizedTest
+    @MethodSource("com.tw.capability.FizzBuzzTest#container7TestArguments")
+    void should_return_Whizz_when_inputNum_container_seven(int inputNum, String transStr){
+
+        String result = FizzBuzz.transNumByContainerSeven(inputNum);
+
+        assertEquals(transStr,result);
+    }
 
 }
