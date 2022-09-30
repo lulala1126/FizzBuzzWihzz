@@ -16,4 +16,14 @@ public class FizzBuzz {
         if (result.length() == 0) result.append(i);
         return result.toString();
     }
+
+    public static String transNumByContainerFive(int inputNum) {
+        StringBuilder sb = new StringBuilder();
+        if(Integer.toString(inputNum).contains("5")){
+            sb.append("Buzz");
+            if(inputNum % 7 == 0) sb.append("Whizz");
+            return sb.toString();
+        }
+        return null;
+    }
 }

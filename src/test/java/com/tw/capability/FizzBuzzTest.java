@@ -47,5 +47,22 @@ class FizzBuzzTest {
         assertEquals(transStr,result);
     }
 
+    static Stream<Arguments> container5TestArguments() {
+        return Stream.of(
+                Arguments.of(5, "Buzz"),
+                Arguments.of(15, "Buzz"),
+                Arguments.of(35, "BuzzWhizz"),
+                Arguments.of(14, null)
+        );
+    }
+    @ParameterizedTest
+    @MethodSource("com.tw.capability.FizzBuzzTest#container5TestArguments")
+    void should_return_Buzz_when_inputNum_container_five(int inputNum, String transStr){
+
+        String result = FizzBuzz.transNumByContainerFive(inputNum);
+
+        assertEquals(transStr,result);
+    }
+
 
 }
