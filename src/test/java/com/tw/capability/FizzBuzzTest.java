@@ -4,10 +4,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Optional;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FizzBuzzTest {
     static Stream<Arguments> divisionArguments() {
@@ -25,42 +24,44 @@ class FizzBuzzTest {
     @MethodSource("com.tw.capability.FizzBuzzTest#divisionArguments")
     void should_return_FizzBuzzWhizz_when_inputNum_can_divBy_357(int inputNum, String transStr){
 
-        String result = FizzBuzz.transNumByDiv(inputNum);
+        String result = new NumCanDiv(inputNum).trans();
 
         assertEquals(transStr,result);
     }
 
     static Stream<Arguments> container3TestArguments() {
         return Stream.of(
-                Arguments.of(3, Optional.of("Fizz")),
-                Arguments.of(13, Optional.of("Fizz")),
-                Arguments.of(23, Optional.of("Fizz")),
+                Arguments.of(3, "Fizz"),
+                Arguments.of(13, "Fizz"),
+                Arguments.of(23, "Fizz"),
                 Arguments.of(12, null),
-                Arguments.of(33, Optional.of("Fizz"))
+                Arguments.of(33, "Fizz")
         );
     }
     @ParameterizedTest
     @MethodSource("com.tw.capability.FizzBuzzTest#container3TestArguments")
-    void should_return_Fizz_when_inputNum_container_three(int inputNum, Optional<String> transStr){
+    void should_return_Fizz_when_inputNum_container_three(int inputNum, String transStr){
+        ContainerThree three = new ContainerThree(inputNum);
 
-        Optional<String> result = FizzBuzz.transNumByContainerThree(inputNum);
+        String result = three.match() ? three.trans():null;
 
         assertEquals(transStr,result);
     }
 
     static Stream<Arguments> container5TestArguments() {
         return Stream.of(
-                Arguments.of(5, Optional.of("Buzz")),
-                Arguments.of(15, Optional.of("Buzz")),
-                Arguments.of(35, Optional.of("BuzzWhizz")),
+                Arguments.of(5, "Buzz"),
+                Arguments.of(15, "Buzz"),
+                Arguments.of(35, "BuzzWhizz"),
                 Arguments.of(10, null)
         );
     }
     @ParameterizedTest
     @MethodSource("com.tw.capability.FizzBuzzTest#container5TestArguments")
-    void should_return_Buzz_when_inputNum_container_five(int inputNum, Optional<String> transStr){
+    void should_return_Buzz_when_inputNum_container_five(int inputNum, String transStr){
+        ContainerFive five = new ContainerFive(inputNum);
 
-        Optional<String> result = FizzBuzz.transNumByContainerFive(inputNum);
+        String result = five.match() ? five.trans():null;
 
         assertEquals(transStr,result);
     }
@@ -69,15 +70,16 @@ class FizzBuzzTest {
         return Stream.of(
                 Arguments.of(7, null),
                 Arguments.of(37, null),
-                Arguments.of(75, Optional.of("Fizz")),
+                Arguments.of(75, "Fizz"),
                 Arguments.of(14, null)
         );
     }
     @ParameterizedTest
     @MethodSource("com.tw.capability.FizzBuzzTest#container7TestArguments")
-    void should_return_Whizz_when_inputNum_container_seven(int inputNum, Optional<String> transStr){
+    void should_return_Whizz_when_inputNum_container_seven(int inputNum, String transStr){
+        ContainerSeven seven = new ContainerSeven(inputNum);
 
-        Optional<String> result = FizzBuzz.transNumByContainerSeven(inputNum);
+        String result = seven.match() ? seven.trans():null;
 
         assertEquals(transStr,result);
     }
