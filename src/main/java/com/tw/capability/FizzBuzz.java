@@ -1,12 +1,15 @@
 package com.tw.capability;
 
+import java.util.Optional;
+
 public class FizzBuzz {
 
-    public static String transNumByContainerThree(int i){
+    public static Optional<String> transNumByContainerThree(int i){
+        Optional<String> result = Optional.empty();
         if(Integer.toString(i).contains("3")){
-            return "Fizz";
+            result = Optional.of("Fizz");
         }
-        return null;
+        return result;
     }
     public static String transNumByDiv(int i) {
         StringBuilder result = new StringBuilder();
@@ -17,20 +20,22 @@ public class FizzBuzz {
         return result.toString();
     }
 
-    public static String transNumByContainerFive(int inputNum) {
+    public static Optional<String> transNumByContainerFive(int inputNum) {
+        Optional<String> result = Optional.empty();
         StringBuilder sb = new StringBuilder();
         if(Integer.toString(inputNum).contains("5")){
             sb.append("Buzz");
             if(inputNum % 7 == 0) sb.append("Whizz");
-            return sb.toString();
+            result = Optional.of(sb.toString());
         }
-        return null;
+        return result;
     }
 
-    public static String transNumByContainerSeven(int inputNum) {
+    public static Optional<String> transNumByContainerSeven(int inputNum) {
+        Optional<String> result = Optional.empty();
         if(Integer.toString(inputNum).contains("7")){
-            if(inputNum % 3 == 0) return "Fizz";
+            if(inputNum % 3 == 0) result= Optional.of("Fizz");
         }
-        return null;
+        return result;
     }
 }
